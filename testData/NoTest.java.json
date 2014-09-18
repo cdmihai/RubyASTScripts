@@ -1,0 +1,120 @@
+{
+	"type": "15",
+	"typeLabel": "CompilationUnit",
+	"pos": "0",
+	"length": "124",
+	"children": [
+		{
+			"type": "35",
+			"typeLabel": "PackageDeclaration",
+			"pos": "0",
+			"length": "15",
+			"children": [
+				{
+					"type": "42",
+					"label": "parser",
+					"typeLabel": "SimpleName",
+					"pos": "8",
+					"length": "6",
+					"children": []
+				}
+			]
+		},
+		{
+			"type": "26",
+			"typeLabel": "ImportDeclaration",
+			"pos": "17",
+			"length": "33",
+			"children": [
+				{
+					"type": "40",
+					"label": "org.junit.Assert",
+					"typeLabel": "QualifiedName",
+					"pos": "31",
+					"length": "16",
+					"children": []
+				}
+			]
+		},
+		{
+			"type": "55",
+			"typeLabel": "TypeDeclaration",
+			"pos": "52",
+			"length": "71",
+			"children": [
+				{
+					"type": "83",
+					"label": "public",
+					"typeLabel": "Modifier",
+					"pos": "52",
+					"length": "6",
+					"children": []
+				},
+				{
+					"type": "42",
+					"label": "NoTest",
+					"typeLabel": "SimpleName",
+					"pos": "65",
+					"length": "6",
+					"children": []
+				},
+				{
+					"type": "31",
+					"typeLabel": "MethodDeclaration",
+					"pos": "76",
+					"length": "45",
+					"children": [
+						{
+							"type": "83",
+							"label": "private",
+							"typeLabel": "Modifier",
+							"pos": "76",
+							"length": "7",
+							"children": []
+						},
+						{
+							"type": "39",
+							"label": "boolean",
+							"typeLabel": "PrimitiveType",
+							"pos": "84",
+							"length": "7",
+							"children": []
+						},
+						{
+							"type": "42",
+							"label": "doStu",
+							"typeLabel": "SimpleName",
+							"pos": "92",
+							"length": "5",
+							"children": []
+						},
+						{
+							"type": "8",
+							"typeLabel": "Block",
+							"pos": "100",
+							"length": "21",
+							"children": [
+								{
+									"type": "41",
+									"typeLabel": "ReturnStatement",
+									"pos": "104",
+									"length": "13",
+									"children": [
+										{
+											"type": "9",
+											"label": "false",
+											"typeLabel": "BooleanLiteral",
+											"pos": "111",
+											"length": "5",
+											"children": []
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}

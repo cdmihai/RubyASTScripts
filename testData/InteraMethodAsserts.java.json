@@ -1,0 +1,392 @@
+{
+	"type": "15",
+	"typeLabel": "CompilationUnit",
+	"pos": "0",
+	"length": "363",
+	"children": [
+		{
+			"type": "35",
+			"typeLabel": "PackageDeclaration",
+			"pos": "0",
+			"length": "15",
+			"children": [
+				{
+					"type": "42",
+					"label": "parser",
+					"typeLabel": "SimpleName",
+					"pos": "8",
+					"length": "6",
+					"children": []
+				}
+			]
+		},
+		{
+			"type": "26",
+			"typeLabel": "ImportDeclaration",
+			"pos": "17",
+			"length": "33",
+			"children": [
+				{
+					"type": "40",
+					"label": "org.junit.Assert",
+					"typeLabel": "QualifiedName",
+					"pos": "31",
+					"length": "16",
+					"children": []
+				}
+			]
+		},
+		{
+			"type": "55",
+			"typeLabel": "TypeDeclaration",
+			"pos": "52",
+			"length": "310",
+			"children": [
+				{
+					"type": "83",
+					"label": "public",
+					"typeLabel": "Modifier",
+					"pos": "52",
+					"length": "6",
+					"children": []
+				},
+				{
+					"type": "42",
+					"label": "InteraMethodAsserts",
+					"typeLabel": "SimpleName",
+					"pos": "65",
+					"length": "19",
+					"children": []
+				},
+				{
+					"type": "31",
+					"typeLabel": "MethodDeclaration",
+					"pos": "89",
+					"length": "82",
+					"children": [
+						{
+							"type": "78",
+							"typeLabel": "MarkerAnnotation",
+							"pos": "89",
+							"length": "15",
+							"children": [
+								{
+									"type": "40",
+									"label": "org.junit.Test",
+									"typeLabel": "QualifiedName",
+									"pos": "90",
+									"length": "14",
+									"children": []
+								}
+							]
+						},
+						{
+							"type": "83",
+							"label": "public",
+							"typeLabel": "Modifier",
+							"pos": "106",
+							"length": "6",
+							"children": []
+						},
+						{
+							"type": "39",
+							"label": "void",
+							"typeLabel": "PrimitiveType",
+							"pos": "113",
+							"length": "4",
+							"children": []
+						},
+						{
+							"type": "42",
+							"label": "testName",
+							"typeLabel": "SimpleName",
+							"pos": "118",
+							"length": "8",
+							"children": []
+						},
+						{
+							"type": "42",
+							"label": "Exception",
+							"typeLabel": "SimpleName",
+							"pos": "136",
+							"length": "9",
+							"children": []
+						},
+						{
+							"type": "8",
+							"typeLabel": "Block",
+							"pos": "146",
+							"length": "25",
+							"children": [
+								{
+									"type": "21",
+									"typeLabel": "ExpressionStatement",
+									"pos": "150",
+									"length": "18",
+									"children": [
+										{
+											"type": "32",
+											"typeLabel": "MethodInvocation",
+											"pos": "150",
+											"length": "17",
+											"children": [
+												{
+													"type": "42",
+													"label": "assertTrue",
+													"typeLabel": "SimpleName",
+													"pos": "150",
+													"length": "10",
+													"children": []
+												},
+												{
+													"type": "9",
+													"label": "false",
+													"typeLabel": "BooleanLiteral",
+													"pos": "161",
+													"length": "5",
+													"children": []
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "31",
+					"typeLabel": "MethodDeclaration",
+					"pos": "175",
+					"length": "100",
+					"children": [
+						{
+							"type": "78",
+							"typeLabel": "MarkerAnnotation",
+							"pos": "175",
+							"length": "15",
+							"children": [
+								{
+									"type": "40",
+									"label": "org.junit.Test",
+									"typeLabel": "QualifiedName",
+									"pos": "176",
+									"length": "14",
+									"children": []
+								}
+							]
+						},
+						{
+							"type": "83",
+							"label": "public",
+							"typeLabel": "Modifier",
+							"pos": "192",
+							"length": "6",
+							"children": []
+						},
+						{
+							"type": "39",
+							"label": "void",
+							"typeLabel": "PrimitiveType",
+							"pos": "199",
+							"length": "4",
+							"children": []
+						},
+						{
+							"type": "42",
+							"label": "testName2",
+							"typeLabel": "SimpleName",
+							"pos": "204",
+							"length": "9",
+							"children": []
+						},
+						{
+							"type": "42",
+							"label": "Exception",
+							"typeLabel": "SimpleName",
+							"pos": "223",
+							"length": "9",
+							"children": []
+						},
+						{
+							"type": "8",
+							"typeLabel": "Block",
+							"pos": "233",
+							"length": "42",
+							"children": [
+								{
+									"type": "21",
+									"typeLabel": "ExpressionStatement",
+									"pos": "237",
+									"length": "18",
+									"children": [
+										{
+											"type": "32",
+											"typeLabel": "MethodInvocation",
+											"pos": "237",
+											"length": "17",
+											"children": [
+												{
+													"type": "42",
+													"label": "assertTrue",
+													"typeLabel": "SimpleName",
+													"pos": "237",
+													"length": "10",
+													"children": []
+												},
+												{
+													"type": "9",
+													"label": "false",
+													"typeLabel": "BooleanLiteral",
+													"pos": "248",
+													"length": "5",
+													"children": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "21",
+									"typeLabel": "ExpressionStatement",
+									"pos": "258",
+									"length": "14",
+									"children": [
+										{
+											"type": "32",
+											"typeLabel": "MethodInvocation",
+											"pos": "258",
+											"length": "13",
+											"children": [
+												{
+													"type": "42",
+													"label": "doMoreStuff",
+													"typeLabel": "SimpleName",
+													"pos": "258",
+													"length": "11",
+													"children": []
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				{
+					"type": "31",
+					"typeLabel": "MethodDeclaration",
+					"pos": "278",
+					"length": "82",
+					"children": [
+						{
+							"type": "83",
+							"label": "private",
+							"typeLabel": "Modifier",
+							"pos": "278",
+							"length": "7",
+							"children": []
+						},
+						{
+							"type": "39",
+							"label": "void",
+							"typeLabel": "PrimitiveType",
+							"pos": "286",
+							"length": "4",
+							"children": []
+						},
+						{
+							"type": "42",
+							"label": "doMoreStuff",
+							"typeLabel": "SimpleName",
+							"pos": "291",
+							"length": "11",
+							"children": []
+						},
+						{
+							"type": "8",
+							"typeLabel": "Block",
+							"pos": "305",
+							"length": "55",
+							"children": [
+								{
+									"type": "21",
+									"typeLabel": "ExpressionStatement",
+									"pos": "309",
+									"length": "27",
+									"children": [
+										{
+											"type": "32",
+											"typeLabel": "MethodInvocation",
+											"pos": "309",
+											"length": "26",
+											"children": [
+												{
+													"type": "42",
+													"label": "assertEquals",
+													"typeLabel": "SimpleName",
+													"pos": "309",
+													"length": "12",
+													"children": []
+												},
+												{
+													"type": "9",
+													"label": "false",
+													"typeLabel": "BooleanLiteral",
+													"pos": "322",
+													"length": "5",
+													"children": []
+												},
+												{
+													"type": "9",
+													"label": "true",
+													"typeLabel": "BooleanLiteral",
+													"pos": "330",
+													"length": "4",
+													"children": []
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "21",
+									"typeLabel": "ExpressionStatement",
+									"pos": "339",
+									"length": "18",
+									"children": [
+										{
+											"type": "32",
+											"typeLabel": "MethodInvocation",
+											"pos": "339",
+											"length": "17",
+											"children": [
+												{
+													"type": "42",
+													"label": "assertFalse",
+													"typeLabel": "SimpleName",
+													"pos": "339",
+													"length": "11",
+													"children": []
+												},
+												{
+													"type": "9",
+													"label": "true",
+													"typeLabel": "BooleanLiteral",
+													"pos": "351",
+													"length": "4",
+													"children": []
+												}
+											]
+										}
+									]
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
