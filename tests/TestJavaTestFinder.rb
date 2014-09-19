@@ -8,14 +8,25 @@ class TestJavaTestFinder < Test::Unit::TestCase
   end
 
   def test_no_test
-  	assert_equal(0, @testFinder.find_tests("../testData/NoTest.java.json"))
+  	result = @testFinder.find_tests("../testData/NoTest.java.json")
+
+  	assertResult(result, 0, 0)
   end
 
   def test_simple_test
-  	assert_equal(1, @testFinder.find_tests("../testData/SimpleTest.java.json"))
+  	result = @testFinder.find_tests("../testData/SimpleTest.java.json")
+
+  	assertResult(result, 1, 1)
   end
 
   def test_multiple_tests_multiple_asserts
-  	assert_equal(2, @testFinder.find_tests("../testData/MultipleAsserts.java.json"))
+  	result = @testFinder.find_tests("../testData/MultipleAsserts.java.json")
+
+  	assertResult(result, 2, 3)
+  end
+
+  def assertResult(result, expectedTests, expectedAssertions)
+  	assert_equal(expectedTests, result["tests"])
+  	assert_equal(expectedAssertions, result["asserts"])
   end
 end
