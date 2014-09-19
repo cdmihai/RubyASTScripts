@@ -3,7 +3,7 @@ require "rubygems"
 require "json"
 
 class JavaTestFinder
-	
+
 	def find_tests(filePath)
 		json = get_json_from_file(filePath)
 
@@ -11,18 +11,10 @@ class JavaTestFinder
 		found_methods = []
 		find_methods(json, found_methods)
 
-		found_methods.each do |method|
-			puts method["typeLabel"]
-		end	
-
-		# found_methods.each do |method|
-		# 	puts method["typeLabel"]
-		# end
-		
-
 		#find all test methods
+		test_methods = found_methods.find_all{|method| is_test(method)}
 
-		return 0
+		return test_methods.size
 	end
 
 	def find_methods(root, found_methods)
@@ -41,6 +33,22 @@ class JavaTestFinder
 		content = file.read
 
 		return JSON.parse(content)
+	end
+
+	def is_test(method)
+		annotation = method["children"].find{|child| child["typeLabel"] == "MarkerAnnotation"}
+
+		return false if annotation.nil?
+
+		is_test_annotation(annotation) ? true : false
+	end
+
+	def is_test_annotation(annotation)
+		annotationString = annotation["children"].find{|child| child["typeLabel"] == "QualifiedName"}
+
+		puts annotationString
+
+		return annotationString["label"].include? "Test"
 	end
 
 end
