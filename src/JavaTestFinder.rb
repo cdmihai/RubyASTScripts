@@ -14,26 +14,37 @@ class JavaTestFinder
     test_methods = found_methods.find_all{|method| is_test(method)}
 
     #for each test method, get its asserts
-    test_assert_map = {}
-    find_asserts(test_methods, test_assert_map)
+    test_assert_map = find_asserts(test_methods)
 
-    result = {}
+    format_output(test_assert_map)
+  end
 
-    result["tests"] = test_methods.size
+  def format_output(test_assert_map)
+  	result = {}
 
-    if test_methods.size > 0
+    result["tests"] = test_assert_map.keys.size
+
+    if test_assert_map.keys.size > 0
     	result["asserts"] = test_assert_map.values.reduce(:+) 
     else
     	result["asserts"] = 0
     end
 
-    return result
+    result
   end
 
-  def find_asserts(tests, test_assert_map)
+  def find_asserts(tests)
+  	test_assert_map = {}
+    
+    tests.each do |test|
+    	test_assert_map[get_method_name(test)] = 0
+    end
+
   	tests.each do |test|
   		find_asserts_for_test(test, test_assert_map)
   	end
+
+  	test_assert_map
   end
 
   def find_asserts_for_test(test, test_assert_map)
