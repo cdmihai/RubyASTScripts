@@ -3,8 +3,12 @@ require "test/unit"
 
 class TestJavaTestFinder < Test::Unit::TestCase
 
-  def test_sample
-    assert_equal(3, JavaTestFinder.new.add(1,2))
+  def test_no_test
+  	assert_equal(0, @testFinder.find_tests("../testData/NoTest.java.json"))
+  end
+
+  def test_simple_test
+  	assert_equal(1, @testFinder.find_tests("../testData/SimpleTest.java.json"))
   end
 
 end
