@@ -15,4 +15,7 @@ class TestJavaTestFinder < Test::Unit::TestCase
   	assert_equal(1, @testFinder.find_tests("../testData/SimpleTest.java.json"))
   end
 
+  def test_multiple_tests_multiple_asserts
+  	assert_equal(2, @testFinder.find_tests("../testData/MultipleAsserts.java.json"))
+  end
 end
