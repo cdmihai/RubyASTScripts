@@ -99,7 +99,21 @@ class JavaTestFinder
     node["typeLabel"] == "QualifiedName"
   end
 
+  def is_method_invocation(node)
+  	node["typeLabel"] == "MethodInvocation"
+  end
+
+  def is_simple_name(node)
+  	node["typeLabel"] == "SimpleName"
+  end
+
   def find_child(node, childOKLambda)
     node["children"].find{|child| childOKLambda.call(child)}
+  end
+
+  #works for both method declarations and method invocations
+  def get_method_name(method)
+  	simple_name = find_child(method, ->(child){is_simple_name(child)})
+  	simple_name["label"]
   end
 end
