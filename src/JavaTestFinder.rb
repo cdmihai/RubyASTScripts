@@ -13,13 +13,18 @@ class JavaTestFinder
     #find all test methods
     test_methods = found_methods.find_all{|method| is_test(method)}
 
-    return test_methods.size
+    result = {}
+
+    result["tests"] = test_methods.size
+    result["asserts"] = 0
+
+    return result
   end
 
   def find_methods(root, found_methods)
 
     if is_method(root)
-    found_methods << root
+    	found_methods << root
     end
 
     root["children"].each do |child|
