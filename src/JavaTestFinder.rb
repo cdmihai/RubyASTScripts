@@ -20,7 +20,12 @@ class JavaTestFinder
     result = {}
 
     result["tests"] = test_methods.size
-    result["asserts"] = 0
+
+    if test_methods.size > 0
+    	result["asserts"] = test_assert_map.values.reduce(:+) 
+    else
+    	result["asserts"] = 0
+    end
 
     return result
   end
