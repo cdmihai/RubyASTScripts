@@ -19,7 +19,7 @@ class JavaTestFinder
 
 	def find_methods(root, found_methods)
 
-		if root["typeLabel"] == "MethodDeclaration"
+		if is_method(root)
 			found_methods << root
 		end
 
@@ -36,7 +36,7 @@ class JavaTestFinder
 	end
 
 	def is_test(method)
-		annotation = method["children"].find{|child| child["typeLabel"] == "MarkerAnnotation"}
+		annotation = find_child(method, ->(x){is_annotation(x)})
 
 		return false if annotation.nil?
 
@@ -44,11 +44,26 @@ class JavaTestFinder
 	end
 
 	def is_test_annotation(annotation)
-		annotationString = annotation["children"].find{|child| child["typeLabel"] == "QualifiedName"}
+		annotationString = find_child(annotation, ->(x){is_qualified_name(x)})
 
 		puts annotationString
 
 		return annotationString["label"].include? "Test"
 	end
+	
+	def is_method(node)
+	  node["typeLabel"] == "MethodDeclaration"
+	end
+	
+	def is_annotation(node)
+	   node["typeLabel"] == "MarkerAnnotation"
+	end
 
+  def is_qualified_name(node)
+    node["typeLabel"] == "QualifiedName"
+  end
+  
+  def find_child(node, childOKLambda)
+    node["children"].find{|child| childOKLambda.call(child)}
+  end
 end
