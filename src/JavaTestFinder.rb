@@ -13,6 +13,10 @@ class JavaTestFinder
     #find all test methods
     test_methods = found_methods.find_all{|method| is_test(method)}
 
+    #for each test method, get its asserts
+    test_assert_map = {}
+    find_asserts(test_methods, test_assert_map)
+
     result = {}
 
     result["tests"] = test_methods.size
@@ -21,10 +25,29 @@ class JavaTestFinder
     return result
   end
 
-  def find_methods(root, found_methods)
+  def find_asserts(tests, test_assert_map)
+  	tests.each do |test|
+  		find_asserts_for_test(test, test_assert_map)
+  	end
+  end
 
-    if is_method(root)
-    	found_methods << root
+  def find_asserts_for_test(test, test_assert_map)
+  	#find all method invocations
+  	method_invocations = []
+  	find_nodes(test, method_invocations, ->(x){is_method_invocation(x)})
+
+  	#retain invocations that start with "assert"
+  	assert_invocations = method_invocations.find_all{|invocation| is_assert(invocation)}
+
+  	test_assert_map[get_method_name(test)] = assert_invocations.size
+  end
+
+  def is_assert(invocation)
+  	method_name = get_method_name(invocation)
+
+  	method_name.start_with? "assert"
+  end
+
   def find_nodes(root, found_nodes, propertyLambda)
 
     if propertyLambda.call(root)
@@ -56,7 +79,7 @@ class JavaTestFinder
 
     puts annotationString
 
-    return annotationString["label"].include? "Test"
+    annotationString["label"].include? "Test"
   end
 
   def is_method(node)
