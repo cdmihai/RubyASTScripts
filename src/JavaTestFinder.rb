@@ -8,7 +8,7 @@ class JavaTestFinder
 
     #find all methods
     found_methods = []
-    find_methods(json, found_methods)
+    find_nodes(json, found_methods, ->(x){is_method(x)})
 
     #find all test methods
     test_methods = found_methods.find_all{|method| is_test(method)}
@@ -25,10 +25,14 @@ class JavaTestFinder
 
     if is_method(root)
     	found_methods << root
+  def find_nodes(root, found_nodes, propertyLambda)
+
+    if propertyLambda.call(root)
+    	found_nodes << root
     end
 
     root["children"].each do |child|
-      find_methods(child, found_methods)
+      find_nodes(child, found_nodes, propertyLambda)
     end
   end
 
