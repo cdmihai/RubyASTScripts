@@ -87,8 +87,12 @@ class JavaTestFinder
 
   def is_test_annotation(annotation)
     annotationString = find_direct_child(annotation, ->(x){is_qualified_name(x)})
+    
+    if annotationString.nil?
+      annotationString = find_direct_child(annotation, ->(x){is_simple_name(x)})
+    end
 
-    puts annotationString
+    return false if annotationString.nil?
 
     annotationString["label"].include? "Test"
   end
