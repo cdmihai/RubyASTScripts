@@ -16,21 +16,24 @@ class JavaTestFinder
     #for each test method, get its asserts
     test_assert_map = find_direct_asserts(test_methods)
 
-    format_output(test_assert_map)
     #get all asserts
     all_asserts = find_asserts(json)
+
+    format_output(test_assert_map, all_asserts)
   end
 
-  def format_output(test_assert_map)
+  def format_output(test_assert_map, all_asserts)
   	result = {}
 
     result["tests"] = test_assert_map.keys.size
 
     if test_assert_map.keys.size > 0
-    	result["asserts"] = test_assert_map.values.reduce(:+) 
+    	result["directAsserts"] = test_assert_map.values.reduce(:+) 
     else
-    	result["asserts"] = 0
+    	result["directAsserts"] = 0
     end
+
+    result["allAsserts"] = all_asserts.size
 
     result
   end
