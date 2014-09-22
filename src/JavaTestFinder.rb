@@ -65,9 +65,14 @@ class JavaTestFinder
   end
 
   def is_assert(invocation)
+  	valid_assert_names = ["assertArrayEquals", "assertEquals", "assertNotSame", "assertNull", "assertSame", "assertThat", "assertTrue", "assertFalse"]
   	method_name = get_method_name(invocation)
 
-  	method_name.start_with? "assert"
+  	is_valid = valid_assert_names.include? method_name
+
+  	puts "method #{method_name} not recognized as valid assert" if !is_valid && (method_name.include? "assert")
+
+  	is_valid
   end
 
   def get_json_from_file(filePath)
