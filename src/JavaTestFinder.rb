@@ -14,9 +14,11 @@ class JavaTestFinder
     test_methods = found_methods.find_all{|method| is_test(method)}
 
     #for each test method, get its asserts
-    test_assert_map = find_asserts(test_methods)
+    test_assert_map = find_direct_asserts(test_methods)
 
     format_output(test_assert_map)
+    #get all asserts
+    all_asserts = find_asserts(json)
   end
 
   def format_output(test_assert_map)
@@ -33,7 +35,7 @@ class JavaTestFinder
     result
   end
 
-  def find_asserts(tests)
+  def find_direct_asserts(tests)
   	test_assert_map = {}
     
     tests.each do |test|
@@ -41,21 +43,22 @@ class JavaTestFinder
     end
 
   	tests.each do |test|
-  		find_asserts_for_test(test, test_assert_map)
+  		asserts = find_asserts(test)
+  		test_assert_map[get_method_name(test)] = asserts.size
   	end
 
   	test_assert_map
   end
 
-  def find_asserts_for_test(test, test_assert_map)
+  def find_asserts(node)
   	#find all method invocations
   	method_invocations = []
-  	find_nodes(test, method_invocations, ->(x){is_method_invocation(x)})
+  	find_nodes(node, method_invocations, ->(x){is_method_invocation(x)})
 
   	#retain invocations that start with "assert"
-  	assert_invocations = method_invocations.find_all{|invocation| is_assert(invocation)}
+  	asserts = method_invocations.find_all{|invocation| is_assert(invocation)}
 
-  	test_assert_map[get_method_name(test)] = assert_invocations.size
+  	asserts
   end
 
   def is_assert(invocation)
