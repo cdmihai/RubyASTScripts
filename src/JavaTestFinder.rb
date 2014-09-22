@@ -64,17 +64,6 @@ class JavaTestFinder
   	method_name.start_with? "assert"
   end
 
-  def find_nodes(root, found_nodes, propertyLambda)
-
-    if propertyLambda.call(root)
-    	found_nodes << root
-    end
-
-    root["children"].each do |child|
-      find_nodes(child, found_nodes, propertyLambda)
-    end
-  end
-
   def get_json_from_file(filePath)
     file = open(filePath)
     content = file.read
@@ -83,7 +72,7 @@ class JavaTestFinder
   end
 
   def is_test(method)
-    annotation = find_child(method, ->(x){is_annotation(x)})
+    annotation = find_direct_child(method, ->(x){is_annotation(x)})
 
     return false if annotation.nil?
 
@@ -91,7 +80,7 @@ class JavaTestFinder
   end
 
   def is_test_annotation(annotation)
-    annotationString = find_child(annotation, ->(x){is_qualified_name(x)})
+    annotationString = find_direct_child(annotation, ->(x){is_qualified_name(x)})
 
     puts annotationString
 
@@ -118,13 +107,24 @@ class JavaTestFinder
   	node["typeLabel"] == "SimpleName"
   end
 
-  def find_child(node, childOKLambda)
+  def find_direct_child(node, childOKLambda)
     node["children"].find{|child| childOKLambda.call(child)}
   end
 
-  #works for both method declarations and method invocations
-  def get_method_name(method)
-  	simple_name = find_child(method, ->(child){is_simple_name(child)})
+  def find_nodes(root, found_nodes, propertyLambda)
+
+    if propertyLambda.call(root)
+    	found_nodes << root
+    end
+
+    root["children"].each do |child|
+      find_nodes(child, found_nodes, propertyLambda)
+    end
+  end
+
+ #works for both method declarations and method invocations
+ def get_method_name(method)
+  	simple_name = find_direct_child(method, ->(child){is_simple_name(child)})
   	simple_name["label"]
   end
 end
