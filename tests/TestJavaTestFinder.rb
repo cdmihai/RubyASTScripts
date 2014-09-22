@@ -25,9 +25,21 @@ class TestJavaTestFinder < Test::Unit::TestCase
   	assertResult(result, 2, 3, 3)
   end
 
-  def assertResult(result, expectedTests, directAsserts, allAsserts)
-  	assert_equal(expectedTests, result["tests"])
-  	assert_equal(directAsserts, result["directAsserts"])
-  	assert_equal(directAsserts, result["allAsserts"])
+  def test_indirect_asserts
+  	result = @testFinder.find_tests("../testData/InteraMethodAsserts.java.json")
+
+  	assertResult(result, 2, 2, 4)
+  end
+
+  def test_shared_indirect_asserts
+  	result = @testFinder.find_tests("../testData/SharedInteraMethodAsserts.java.json")
+
+  	assertResult(result, 3, 2, 4)
+  end
+
+  def assertResult(result, expected_tests, direct_asserts, all_asserts)
+  	assert_equal(expected_tests, result["tests"])
+  	assert_equal(direct_asserts, result["directAsserts"])
+  	assert_equal(all_asserts, result["allAsserts"])
   end
 end
