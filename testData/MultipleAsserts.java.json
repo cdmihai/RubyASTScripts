@@ -72,7 +72,7 @@
 							"children": [
 								{
 									"type": "40",
-									"label": "org.junit.Test",
+									"label": "Test",
 									"typeLabel": "QualifiedName",
 									"pos": "86",
 									"length": "14",
