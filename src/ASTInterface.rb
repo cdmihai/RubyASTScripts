@@ -7,16 +7,16 @@ require '../lib/gumtreeFacade.jar'
 
 @ast = Java::gumtreeFacade.AST
 
-def treeAST(lang, source)
-	return @ast.getTreeAST(lang, source)
+def treeAST(source, extension)
+	return @ast.getTreeAST(source, extension)
 end
 
 def treeAST(path)
 	return @ast.getTreeAST(path)
 end
 
-def diffAST(lang, source, destination)
-	return @ast.getDiffAST(lang, source, destination)
+def diffAST(source, destination, extension)
+	return @ast.getDiffAST(source, destination, extension)
 end
 
 def diffAST(src_path, dst_path)
