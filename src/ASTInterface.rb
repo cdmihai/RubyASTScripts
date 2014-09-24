@@ -6,6 +6,7 @@ require '../lib/gumtree.jar'
 require '../lib/gumtreeFacade.jar'
 
 @ast = Java::gumtreeFacade.AST
+# WARNING: the command-line option for --diff requires that filepath arguments be in the form ["/path/to/file1","/path/to/file2"]
 
 def treeAST(source, extension)
 	return @ast.getTreeAST(source, extension)
